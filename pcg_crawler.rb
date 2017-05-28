@@ -23,3 +23,5 @@ p hp
 
 poke_type = doc.xpath('//html/body/div/div[1]/section[1]/div/div[2]/div/div[1]/div/div[2]/span[4]')[0]["class"]
 p poke_type
+poke_type.gsub!(/(.?icon.?)/,"" )
+p poke_type
