@@ -10,7 +10,7 @@ require 'pp'
 # doc = Nokogiri::HTML.parse(open(url))
 # = doc.xpath('/').text
 
-url = "http://www.pokemon-card.com/card-search/details.php/card/33468/regu/all"
+url = "http://www.pokemon-card.com/card-search/details.php/card/33503/regu/all"
 # url = "http://www.pokemon-card.com/card-search/details.php/card/33476/regu/all"
 doc = Nokogiri::HTML.parse(open(url))
 name = doc.xpath('//html/body/div/div[1]/section[1]/h1').text
@@ -37,4 +37,15 @@ if text_type=="特性"
 
 	tokusei_effect = doc.xpath('//html/body/div/div[1]/section[1]/div/div[2]/div/p[1]').text
 	p tokusei_effect
+
+elsif "わざ"
+	energy = doc.xpath('//html/body/div/div[1]/section[1]/div/div[2]/div/h4[1]/span')[0]["class"]
+	energy.gsub!(/(.?icon.?)/,"" )
+	p energy
+
+	waza_name = doc.xpath('//html/body/div/div[1]/section[1]/div/div[2]/div/h4[1]/text()').text
+	p waza_name
+	
+	waza_effect = doc.xpath('//html/body/div/div[1]/section[1]/div/div[2]/div/p[1]').text
+	p waza_effect
 end
